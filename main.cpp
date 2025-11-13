@@ -5,6 +5,7 @@
 using namespace std;
 
 void displayIntro();
+void menu();
 void stageOne(int &, int &, int []);
 void stageTwo(int &, int &, int []);
 void stageThree(int, int, int []);
