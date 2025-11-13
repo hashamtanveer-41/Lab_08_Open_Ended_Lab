@@ -11,7 +11,7 @@ void stageTwo(int &, int &, int []);
 void stageThree(int, int, int []);
 bool playAgain();
 void showStats(int, int);
-void moveLocation(int);
+void moveLocation(int&, int&);
 
 // Global Variables
 int energy = 100;
@@ -110,4 +110,19 @@ int showMenu(int stage) {
         cin>>choice;
     }
     return choice;
+}
+void moveLocation(int& energy, int& stage) {
+    int choice;
+    cout<<"Select the location: \n"
+          "1. Study Room \n"
+          "2. Dining Room \n"
+          "3. Garden Path \n";
+    cout<<"Enter your choice: "<<endl;
+    cin>> choice;
+    while (choice<1||choice>3) {
+        cout<<"Invalid choice. Enter your choice: "<<endl;
+        cin>> choice;
+    }
+     energy -=5;
+    if (energy<=10)cout<<"You are feeling exhausted. Solve as soon as possible. ";
 }
