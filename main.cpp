@@ -23,9 +23,35 @@ bool gameRunning = true;
 int main() {
     srand(time(0));
     displayIntro();
-    return 0;
+    while (gameRunning) {
+        int choice = showMenu(stage);
+        switch (choice) {
+            case 1:
+                moveLocation(energy);
+                break;
+            case 2:
+                showStats(energy, reputation);
+                break;
+            case 3:
+                if (stage == 1) stageOne(energy, reputation, clues);
+                else if (stage == 2)stageTwo(energy, reputation, clues);
+                else stageThree(energy, reputation, clues);
+                break;
+            case 4: break;
+            case 5:
+                if (stage==3) stageThree(energy, reputation, clues);
+                else cout << "Keep searching for more clues!\n";
+                break;
+            case 6:
+                cout<<"Thank you for playing."<<endl;
+                gameRunning=false;
+                break;
+        }
+    }
+        return 0;
+
 }
-void displayIntro() {
+void displayIntro(){
     string begin;
 
     cout<<"------------------------------------------------"<<endl;
