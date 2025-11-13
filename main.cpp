@@ -11,6 +11,8 @@ void stageTwo(int &, int &, int []);
 void stageThree(int, int, int []);
 bool playAgain();
 void showStats(int, int);
+void moveLocation(int);
+
 
 int main() {
     srand(time(0));
