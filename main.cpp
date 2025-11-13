@@ -13,6 +13,12 @@ bool playAgain();
 void showStats(int, int);
 void moveLocation(int);
 
+// Global Variables
+int energy = 100;
+int reputation = 50;
+int clues[3] = {0, 0, 0};
+int stage = 1;
+bool gameRunning = true;
 
 int main() {
     srand(time(0));
