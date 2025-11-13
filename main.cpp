@@ -5,7 +5,7 @@
 using namespace std;
 
 void displayIntro();
-void menu();
+int showMenu(int);
 void stageOne(int &, int &, int []);
 void stageTwo(int &, int &, int []);
 void stageThree(int, int, int []);
@@ -14,7 +14,6 @@ void showStats(int, int);
 
 int main() {
     srand(time(0));
-    int choice, score = 0, energy = 100, reputation = 0, clueCount=0;
     displayIntro();
     return 0;
 }
@@ -59,5 +58,22 @@ void displayIntro() {
           "\t4.The Garden Path(hidden clue area)\n"<<endl;
     cout<<"(Press any key to continue)";
     cin>>begin;
-
+}
+int showMenu(int stage) {
+    int choice;
+    cout << "\nChoose your next action:\n"
+    "1. Move to another location\n"
+    "2. Check your current status\n"
+     "3. Investigate the area\n"
+     "4. Talk to a suspect\n";
+    if (stage==3) cout<<"5. Make a final accusation\n";
+    else cout<<"5.Continue investigation\n";
+     cout<<"6. Exit Game\n";
+    cout<<"Enter your choice(1 to 6): "<<endl;
+    cin>>choice;
+    while (choice<1||choice>6) {
+        cout<<"Invalid action.Enter your choice: "<<endl;
+        cin>>choice;
+    }
+    return choice;
 }
