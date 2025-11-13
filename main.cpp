@@ -27,7 +27,7 @@ int main() {
         int choice = showMenu(stage);
         switch (choice) {
             case 1:
-                moveLocation(energy);
+                moveLocation(energy, stage);
                 break;
             case 2:
                 showStats(energy, reputation);
@@ -125,4 +125,27 @@ void moveLocation(int& energy, int& stage) {
     }
      energy -=5;
     if (energy<=10)cout<<"You are feeling exhausted. Solve as soon as possible. ";
+    switch (choice) {
+        case 1:
+            cout<<"You have entered Study Room. The air is humid and tense."<<endl;
+            if (stage==1) {
+                cout<<"You will start your first interrogation."<<endl;
+                stage =1;
+            }
+            break;
+        case 2:
+            cout<<"You are in Dining room. The staff manager stands by nervously."<<endl;
+            if (stage<2) {
+                stage=2;
+                cout<<"Suspect interrogation stage has unlocked.";
+            }
+            break;
+        case 3:
+            cout<<"You follow the path to the garden. Its cold air blowing...."<<endl;
+            if (stage<3) {
+                stage = 3;
+                cout<<"Final stage: The truth is waiting! "<<endl;
+            }
+            break;
+    }
 }
