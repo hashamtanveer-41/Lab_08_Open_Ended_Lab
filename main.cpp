@@ -22,7 +22,7 @@ bool gameRunning = true;
 
 int main() {
     srand(time(0));
-    displayIntro();
+   // displayIntro();
     // while (gameRunning) {
     //     int choice = showMenu(stage);
     //     switch (choice) {
@@ -48,7 +48,7 @@ int main() {
     //             break;
     //     }
     // }
-    displayIntro();
+    showStats(energy, reputation);
         return 0;
 
 }
@@ -153,4 +153,10 @@ void moveLocation(int& energy, int& stage) {
 
 void stageOne(int &energ, int &reput, int x[]){
 
+}
+void showStats(int energy, int reputation){
+    cout<<"---------Detective Status----------\n";
+    cout<<"\033[1;32m|    Energy: "<<energy<<"                   |\033[0m"<<endl;
+    cout<<"\033[1;33m|    Reputation: "<<reputation<<"                |\033[0m"<<endl;
+    cout<<"------------------------------------";
 }
