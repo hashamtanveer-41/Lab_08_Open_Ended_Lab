@@ -23,40 +23,41 @@ bool gameRunning = true;
 int main() {
     srand(time(0));
     displayIntro();
-    while (gameRunning) {
-        int choice = showMenu(stage);
-        switch (choice) {
-            case 1:
-                moveLocation(energy, stage);
-                break;
-            case 2:
-                showStats(energy, reputation);
-                break;
-            case 3:
-                if (stage == 1) stageOne(energy, reputation, clues);
-                else if (stage == 2)stageTwo(energy, reputation, clues);
-                else stageThree(energy, reputation, clues);
-                break;
-            case 4: break;
-            case 5:
-                if (stage==3) stageThree(energy, reputation, clues);
-                else cout << "Keep searching for more clues!\n";
-                break;
-            case 6:
-                cout<<"Thank you for playing."<<endl;
-                gameRunning=false;
-                break;
-        }
-    }
+    // while (gameRunning) {
+    //     int choice = showMenu(stage);
+    //     switch (choice) {
+    //         case 1:
+    //             moveLocation(energy, stage);
+    //             break;
+    //         case 2:
+    //             showStats(energy, reputation);
+    //             break;
+    //         case 3:
+    //             if (stage == 1) stageOne(energy, reputation, clues);
+    //             else if (stage == 2)stageTwo(energy, reputation, clues);
+    //             else stageThree(energy, reputation, clues);
+    //             break;
+    //         case 4: break;
+    //         case 5:
+    //             if (stage==3) stageThree(energy, reputation, clues);
+    //             else cout << "Keep searching for more clues!\n";
+    //             break;
+    //         case 6:
+    //             cout<<"Thank you for playing."<<endl;
+    //             gameRunning=false;
+    //             break;
+    //     }
+    // }
+    displayIntro();
         return 0;
 
 }
 void displayIntro(){
     string begin;
 
-    cout<<"------------------------------------------------"<<endl;
-    cout<<"                 Detective Game"<<endl;
-    cout<<"------------------------------------------------"<<endl<<endl;
+    cout<<"\033[1;33m------------------------------------------------\033[0m"<<endl;
+    cout<<"                 \033[33;44m Detective Game \033[0m"<<endl;
+    cout<<"\033[1;33m------------------------------------------------\033[0m"<<endl<<endl;
     cout<<"-------------------Scenario---------------------"<<endl;
     cout << "Welcome detective to case of emerald heirloom.You are detective Sherlock holmes methodical investigator \n"
             "famous for solving murder mysteries. \n"
@@ -148,4 +149,8 @@ void moveLocation(int& energy, int& stage) {
             }
             break;
     }
+}
+
+void stageOne(int &energ, int &reput, int x[]){
+
 }
