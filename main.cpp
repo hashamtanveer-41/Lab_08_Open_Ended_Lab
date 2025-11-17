@@ -61,7 +61,7 @@ void displayIntro(){
     cout << "Welcome detective to case of emerald heirloom.You are detective Sherlock holmes methodical investigator \n"
             "famous for solving murder mysteries. \n"
             "It is a foggy night at Ravenhurst Manor. Lord Oliver Sterling has been found dead \n"
-            "in his locked study. The only thing missing is the family’s prized Emerald Heirloom.\n"
+            "in his locked study room. The only thing missing is the family’s prized Emerald Heirloom.\n"
             "You are called to uncover the hidden truth before dawn.\n"
             "Time is short, energy is limited and every wrong decision will cost you \n"
             "your reputation.\n"<<endl;
@@ -78,7 +78,9 @@ void displayIntro(){
           "2. Moving between rooms or investigating consumes Energy.\n"
           "3. Making correct deductions increases Reputation\n"
           "4. Collect clues to strengthen your final accusation.\n"
-          "5. Wrong choices or running out of Energy means you lose.\n"<<endl;
+          "5. Wrong choices or running out of Energy means you lose.\n"
+          "6. To make final accusations, you have to complete all the locations.\n"<<endl;
+
     cout<<"(Press any key to continue)";
     cin>>begin;
     cout<<"-------------------Character and Location Introduction------------------"<<endl;
