@@ -17,7 +17,7 @@ void displayIntro();
 int showMenu(int);
 void stageOne(int &, int &, int []);
 void stageTwo(int &energy, int &reputation, int []);
-void stageThree(int, int, int []);
+void stageThree(int &energy, int &reputation, int []);
 bool playAgain();
 void showStats(int, int);
 void moveLocation(int&, int&);
