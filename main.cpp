@@ -76,16 +76,17 @@ int main() {
 void displayIntro(){
     string begin;
     // Displaying header of detective game
-    cout<<"\033[1;33m------------------------------------------------\033[0m"<<endl;
-    cout<<"                 \033[33;44m Detective Game \033[0m"<<endl;
-    cout<<"\033[1;33m------------------------------------------------\033[0m"<<endl<<endl;
+    cout << "\033[1;33m------------------------------------------------------\033[0m\n";
+    cout << "                     \033[33;44m Detective Game \033[0m\n";
+    cout << "\033[1;33m------------------------------------------------------\033[0m\n\n";
+
 
     // Displaying scenario of case
     cout<<"-------------------Scenario---------------------"<<endl;
     cout << "Welcome detective to case of emerald heirloom.You are detective Sherlock holmes methodical investigator \n"
             "famous for solving murder mysteries. \n"
             "It is a foggy night at Ravenhurst Manor. Lord Oliver Sterling has been found dead \n"
-            "in his locked study room. The only thing missing is the family’s prized Emerald Heirloom.\n"
+            "in his locked study room. The only thing missing is the family's prized Emerald Heirloom.\n"
             "You are called to uncover the hidden truth before dawn.\n"
             "Time is short, energy is limited and every wrong decision will cost you \n"
             "your reputation.\n"<<endl;
