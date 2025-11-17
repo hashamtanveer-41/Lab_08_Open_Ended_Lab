@@ -1,15 +1,33 @@
+/*This is a C++ Detective game which provides the user with the scenario
+  of case. The user is given certain options from which he has to choose the
+  most appropriate one by using the hints or clues provided. The user plays
+  role as detective. The wrong decisions cost the detective energy and loss in
+  reputation. The user has to collect all the clues to successfully complete
+  the mission.
+ */
+
 #include <iostream>
 #include <cstdlib>
 #include <ctime>
 
 using namespace std;
 
-void intro();
+// Functions prototypes declaration
+void displayIntro();
+int showMenu(int);
 void stageOne(int &, int &, int []);
 void stageTwo(int &energy, int &reputation, int []);
 void stageThree(int, int, int []);
 bool playAgain();
 void showStats(int, int);
+void moveLocation(int&, int&);
+
+// Global Variables declaration
+int energy = 100;
+int reputation = 50;
+int clues[3] = {0, 0, 0};
+int stage = 1;
+bool gameRunning = true;
 
 // Global Variables
 int energy = 100;
@@ -19,6 +37,7 @@ int stage = 1;
 bool gameRunning = true;
 
 int main() {
+    // Using srand for random number generation by using time as a seed
     srand(time(0));
     int choice;
     return 0;
