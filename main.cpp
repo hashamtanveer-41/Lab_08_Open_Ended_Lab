@@ -77,9 +77,9 @@ int main() {
 void displayIntro(){
     string begin;
     // Displaying header of detective game
-    cout<<"------------------------------------------------"<<endl;
-    cout<<"                 Detective Game"<<endl;
-    cout<<"------------------------------------------------"<<endl<<endl;
+    cout<<"\033[1;33m------------------------------------------------\033[0m"<<endl;
+    cout<<"                 \033[33;44m Detective Game \033[0m"<<endl;
+    cout<<"\033[1;33m------------------------------------------------\033[0m"<<endl<<endl;
 
     // Displaying scenario of case
     cout<<"-------------------Scenario---------------------"<<endl;
