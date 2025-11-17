@@ -1,9 +1,18 @@
+/*This is a C++ Detective game which provides the user with the scenario
+  of case. The user is given certain options from which he has to choose the
+  most appropriate one by using the hints or clues provided. The user plays
+  role as detective. The wrong decisions cost the detective energy and loss in
+  reputation. The user has to collect all the clues to successfully complete
+  the mission.
+ */
+
 #include <iostream>
 #include <cstdlib>
 #include <ctime>
 
 using namespace std;
 
+// Functions prototypes declaration
 void displayIntro();
 int showMenu(int);
 void stageOne(int &, int &, int []);
@@ -13,7 +22,7 @@ bool playAgain();
 void showStats(int, int);
 void moveLocation(int&, int&);
 
-// Global Variables
+// Global Variables declaration
 int energy = 100;
 int reputation = 50;
 int clues[3] = {0, 0, 0};
@@ -21,28 +30,39 @@ int stage = 1;
 bool gameRunning = true;
 
 int main() {
+    // Using srand for random number generation by using time as a seed
     srand(time(0));
+    // Displaying game information by calling displayIntro function
     displayIntro();
+    // Entering loop until user intentionally exits the game
     while (gameRunning) {
+        // Displaying menu and taking the choice of user and storing it in choice
         int choice = showMenu(stage);
+        // Using switch case to execute respective case according to choice of user
         switch (choice) {
             case 1:
+                // Changing location by calling moveLocation function
                 moveLocation(energy, stage);
                 break;
             case 2:
+                // Displaying the reputation and energy of detective
                 showStats(energy, reputation);
                 break;
             case 3:
+                // Executing respective stage according to the user choice
                 if (stage == 1) stageOne(energy, reputation, clues);
                 else if (stage == 2)stageTwo(energy, reputation, clues);
                 else stageThree(energy, reputation, clues);
                 break;
-            case 4: break;
+            case 4: // Talking to suspect
+                break;
             case 5:
+                // Continuing investigation except in stage 3 we make final accusation
                 if (stage==3) stageThree(energy, reputation, clues);
                 else cout << "Keep searching for more clues!\n";
                 break;
             case 6:
+                // Exiting the game
                 cout<<"Thank you for playing."<<endl;
                 gameRunning=false;
                 break;
