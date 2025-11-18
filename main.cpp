@@ -333,15 +333,20 @@ void stageThree(int &energy, int &reputation, int clues[]) {
     cout << "Cold wind brushes past you...\n";
     cout << "This is your last chance to uncover final evidence.\n\n";
 
+    // Prompting the user to take decision
     cout << "...........What would you like to do?...............\n";
     cout << "1. Inspect the muddy footprints\n";
     cout << "2. Examine the broken fence\n";
     cout << "3. Search behind the bushes (waste time)\n";
     cout << "4. Leave the Garden Path (Finish Stage 3)\n";
     cout << "Enter your choice: ";
-
     int choice;
     cin >> choice;
+    // Validating input
+    while (choice<1|| choice>4) {
+        cout << "Invalid choice. Enter your choice: ";
+        cin >> choice;
+    }
 
     switch (choice) {
 
@@ -433,16 +438,20 @@ void moveLocation(int& energy, int& stage) {
             }
     }
 }
+// This function displays the stats of players
 void showStats(int energy, int reputation){
     cout<<"---------Detective Status----------\n";
     cout<<"|\033[1;32m    Energy: "<<energy<<"                   \033[0m|"<<endl;
     cout<<"|\033[1;33m    Reputation: "<<reputation<<"                \033[0m|"<<endl;
     cout<<"------------------------------------";
 }
+
+// This function makes the final accusation depending on the clues gathered in the
+// previous stages
 void finalAccusation(int energy, int reputation, int clues[]) {
     cout << "\n\n================= FINAL ACCUSATION =================\n";
 
-    // Energy check (player collapses)
+    // Checking the energy of player
     if (energy <= 10) {
         cout << "\nYou are exhausted to complete the mission.\n";
         cout << "The inspector takes over your case.\n";
@@ -450,34 +459,31 @@ void finalAccusation(int energy, int reputation, int clues[]) {
         return;
     }
 
-    // Ask for suspect
+    // Asking for accusation
     cout << "\nWho do you accuse of the crime?\n";
     cout << "1. The Butler (Silas Finch)\n";
     cout << "2. The Widow (Abigail Sterling)\n";
     cout << "Enter your choice: ";
-
     int suspect;
     cin >> suspect;
 
-    // Check clues
+    // Checking whether the clues gained are according to the required clues
+    // for the detective to solve the case successfuly
     bool hasHandkerchief = clues[0] == 1;
     bool hasLedger = clues[1] == 1;
     bool hasFootprints = clues[2] == 1;
 
-    cout << "\nReviewing your evidence...\n";
+    cout << "Reviewing your evidence...\n";
 
-    // Win condition
-    if (suspect == 1 && reputation >= 25 &&
-        hasHandkerchief && hasLedger && hasFootprints)
-    {
+    // Checking if the player has completed all the conditions then he wins
+    if (suspect == 1 && reputation >= 25 && hasHandkerchief && hasLedger && hasFootprints){
         cout << "\n\033[1;32mYou present the evidence confidently.\033[0m\n";
         cout << "The butler breaks down and confesses.\n";
         cout << "He staged the theft and murdered Lord Sterling.\n";
         cout << "\033[1;32mENDING: Congratulations: YOU SOLVED THE CASE!\033[0m\n";
         return;
     }
-
-    // Wrong suspect OR missing clues
+    // If conditions do not meet then the detective has failed to solve the case
     cout << "\n\033[1;31mYour accusation collapses under questioning.\033[0m\n";
 
     if (suspect != 1) {
