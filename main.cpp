@@ -9,13 +9,14 @@
 #include <iostream>
 #include <ctime>
 
+
 using namespace std;
 
 // Functions prototypes declaration
 void displayIntro();
 int showMenu(int);
 void stageOne(int &, int &, int []);
-void stageTwo(int &energy, int &reputation, int []);
+void stageTwo(int &energy, int &reputation, int clues[]);
 void stageThree(int &energy, int &reputation, int []);
 bool playAgain();
 void showStats(int, int);
@@ -24,7 +25,7 @@ void moveLocation(int&, int&);
 // Global Variables declaration
 int energy = 100;
 int reputation = 50;
-int clues[3] = {0, 0, 0};
+int clues[4] = {0, 0, 0, 0};
 int stage = 1;
 bool gameRunning = true;
 
@@ -150,6 +151,7 @@ int showMenu(int stage) {
     return choice;
 }
 void stageOne(int &energy, int &reputation, int clues[]){
+    cout<<"-------------------Stage One------------------"<<endl;
     cout<<"\nYou are standing outside the study room.\n";
     cout<<"How do you want to enter?\n";
     cout<<"\n1. Ask the Butler for the key? \033[1;33m(You may lose Energy)\033[0m\n";
@@ -197,7 +199,8 @@ void stageOne(int &energy, int &reputation, int clues[]){
 
 }
 void stageTwo(int &energy, int &reputation, int []) {
-int choice;
+    int choice;
+    cout<<"-------------------Stage Two------------------"<<endl;
     cout << "Lady Evelyn sits quietly at her table"<<endl;
     cout << "Arthur Bellamy sits nearby"<<endl;
 
@@ -300,6 +303,7 @@ int choice;
 }
 
 void stageThree(int &energy, int &reputation, int[]) {
+    cout<<"-------------------Stage Three------------------"<<endl;
     int choice;
     cout << "You have step into the Garden Path."<<endl<<endl;
     cout << "Cold wind brushes past you."<<endl;
