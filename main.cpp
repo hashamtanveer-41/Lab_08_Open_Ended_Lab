@@ -360,8 +360,6 @@ void stageThree(int &energy, int &reputation, int clues[]) {
             cout << "Invalid choice.\n";
             break;
     }
-
-    cout << "\nStage 3 investigation completed. Return to Foyer for final accusation.\n";
 }
 
 // This function enables the user to move to other locations of house. Function displays the different locations
