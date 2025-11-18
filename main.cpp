@@ -217,13 +217,14 @@ void stageOne(int &energy, int &reputation, int clues[]){
         cout<<"\nYou search the drawers, but find nothing unusual.";
     }
 }
-
+// This function interrogates the suspects in the dining room.
 void stageTwo(int &energy, int &reputation, int []) {
     int choice;
     cout<<"-------------------Stage Two------------------"<<endl;
     cout << "Lady Evelyn sits quietly at her table"<<endl;
     cout << "Arthur Bellamy sits nearby"<<endl;
 
+    // Asking user whom he wants to interrogate
     cout << "............Who would you like to talk to?............."<<endl<<endl;
     cout << "1 .Interrogate lady"<<endl;
     cout << "2 .Interrogate Arthur"<<endl;
@@ -231,6 +232,7 @@ void stageTwo(int &energy, int &reputation, int []) {
     cout << "4 .Leave the dining"<<endl<<endl;
     cout << "Enter your choice: "<<endl;
     cin >> choice;
+    // Validating the input
     while (choice<1|| choice>4) {
         cout << "Invalid choice. Enter your choice: "<<endl;
         cin >> choice;
@@ -321,7 +323,9 @@ void stageTwo(int &energy, int &reputation, int []) {
     cout << "stage 2 completed. Now on to the garden path"<<endl;
 
 }
-
+// This function asks user to take some decisions and if the user
+// is able to make the correct decision then he is able to
+// succeed the mission in final round
 void stageThree(int &energy, int &reputation, int clues[]) {
 
     cout << "\n------------------- Stage Three ------------------\n";
