@@ -21,6 +21,7 @@ void stageThree(int &energy, int &reputation, int []);
 bool playAgain();
 void showStats(int, int);
 void moveLocation(int&, int&);
+void finalAccusation(int energy, int reputation, int clues[]);
 
 // Global Variables declaration
 int energy = 100;
@@ -416,4 +417,53 @@ void showStats(int energy, int reputation){
     cout<<"|\033[1;32m    Energy: "<<energy<<"                   \033[0m|"<<endl;
     cout<<"|\033[1;33m    Reputation: "<<reputation<<"                \033[0m|"<<endl;
     cout<<"------------------------------------";
+}
+void finalAccusation(int energy, int reputation, int clues[]) {
+    cout << "\n\n================= FINAL ACCUSATION =================\n";
+
+    // Energy check (player collapses)
+    if (energy <= 10) {
+        cout << "\nYou are exhausted to complete the mission.\n";
+        cout << "The inspector takes over your case.\n";
+        cout << "\033[1;31mENDING: FAILURE (Energy Depleted)\033[0m\n";
+        return;
+    }
+
+    // Ask for suspect
+    cout << "\nWho do you accuse of the crime?\n";
+    cout << "1. The Butler (Silas Finch)\n";
+    cout << "2. The Widow (Abigail Sterling)\n";
+    cout << "Enter your choice: ";
+
+    int suspect;
+    cin >> suspect;
+
+    // Check clues
+    bool hasHandkerchief = clues[0] == 1;
+    bool hasLedger = clues[1] == 1;
+    bool hasFootprints = clues[2] == 1;
+
+    cout << "\nReviewing your evidence...\n";
+
+    // Win condition
+    if (suspect == 1 && reputation >= 25 &&
+        hasHandkerchief && hasLedger && hasFootprints)
+    {
+        cout << "\n\033[1;32mYou present the evidence confidently.\033[0m\n";
+        cout << "The butler breaks down and confesses.\n";
+        cout << "He staged the theft and murdered Lord Sterling.\n";
+        cout << "\033[1;32mENDING: Congratulations: YOU SOLVED THE CASE!\033[0m\n";
+        return;
+    }
+
+    // Wrong suspect OR missing clues
+    cout << "\n\033[1;31mYour accusation collapses under questioning.\033[0m\n";
+
+    if (suspect != 1) {
+        cout << "The real killer escapes as you accuse the wrong person.\n";
+    } else {
+        cout << "You lacked enough evidence to prove the butler's guilt.\n";
+    }
+
+    cout <<"\033[1;31mENDING: FAILURE: CASE UNSOLVED.\033[0m\n";
 }
