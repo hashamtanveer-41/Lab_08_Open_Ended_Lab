@@ -150,17 +150,17 @@ int showMenu(int stage) {
     return choice;
 }
 void stageOne(int &energy, int &reputation, int clues[]){
-    cout<<"\nYou are outside the study room.\n";
+    cout<<"\nYou are standing outside the study room.\n";
     cout<<"How do you want to enter?\n";
-    cout<<"\n\n1. Ask the Buttler for the key? \033[1;33m(You may lose Energy)\033[0m\n";
-    cout<<"2. Try to pich the lock \033[1;33m(you may lose Reputation and Energy)\033[0m\n";
+    cout<<"\n1. Ask the Butler for the key? \033[1;33m(You may lose Energy)\033[0m\n";
+    cout<<"2. Try to pitch the lock \033[1;33m(you may lose Reputation and Energy)\033[0m\n";
     cout<<"\nReply with 1 or 2 to choose from the above: ";
     int choice;
     cin>>choice;
     switch(choice){
         case 1:
             energy -=3;
-            cout<<"Buttler reluctantly hands you the key \033[1;31m(Your Energy decreased by 3)\033[0m\n";
+            cout<<"Butler reluctantly hands you the key \033[1;31m(Your Energy decreased by 3)\033[0m\n";
 
             break;
         case 2:
@@ -170,20 +170,18 @@ void stageOne(int &energy, int &reputation, int clues[]){
             if (success)
             {
                 reputation += 5;
-                energy -+ 5;
-                cout<<"\n \033[1;32mNICE JOB!\033[0m You were successfull in picking the lock \033[1;32m(Your Reputation raied by 5)\033[0m\n";
+                energy -= 5;
+                cout<<"\n \033[1;32mNICE JOB!\033[0m You were successfull in picking the lock \033[1;32m(Your Reputation raised by 5)\033[0m\n";
                 cout<<"You lost some energy in picking the lock \033[1;31m(You energy decreased by 5)\033[0m\n";
             }
             else {
                 reputation -=10;
                 energy -= 10;
-                cout<<"\033[1;31mYou fail to pick the lock and damage the door.\033[0m\n";
-                cout<<"\033[1;31myour Energy and Reputation decreased by 10\033[0m\n";
+                cout<<"\033[1;31m You fail to pick the lock and damage the door.\033[0m\n";
+                cout<<"\033[1;31m Your Energy and Reputation decreased by 10\033[0m\n";
             }
-
-
     }
-    cout<<"\n\nNear Lord Sterling’s desk lies a damp handkerchief embroidered with initials in the room (Clue 1)";
+    cout<<"\n\nNear Lord Sterling's desk lies a damp handkerchief embroidered with initials in the room (Clue 1)";
     clues[0] = 1;
     cout<<"\n\nYou are now searching the drawers....\n\n";
     int foundClue2 = rand() % 2;
@@ -376,7 +374,7 @@ void moveLocation(int& energy, int& stage) {
     switch (choice) {
         case 1:
             // Entering the study room.
-            cout<<"You have entered Study Room. The air is humid and tense."<<endl;
+            cout<<"You are standing outside the Study Room. The air is humid and tense."<<endl;
             if (stage==1) {
                 cout<<"You will start your first interrogation."<<endl;
                 // Assigning the value of stage to 1
