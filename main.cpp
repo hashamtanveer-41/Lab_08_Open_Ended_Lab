@@ -155,7 +155,7 @@ void stageOne(int &energy, int &reputation, int clues[]){
     cout<<"\nYou are standing outside the study room.\n";
     cout<<"How do you want to enter?\n";
     cout<<"\n1. Ask the Butler for the key? \033[1;33m(You may lose Energy)\033[0m\n";
-    cout<<"2. Try to pitch the lock \033[1;33m(you may lose Reputation and Energy)\033[0m\n";
+    cout<<"2. Try to pick the lock \033[1;33m(you may lose Reputation and Energy)\033[0m\n";
     cout<<"\nReply with 1 or 2 to choose from the above: ";
     int choice;
     cin>>choice;
@@ -302,63 +302,64 @@ void stageTwo(int &energy, int &reputation, int []) {
 
 }
 
-void stageThree(int &energy, int &reputation, int[]) {
-    cout<<"-------------------Stage Three------------------"<<endl;
+void stageThree(int &energy, int &reputation, int clues[]) {
+
+    cout << "\n------------------- Stage Three ------------------\n";
+    cout << "You step onto the Garden Path.\n";
+    cout << "Cold wind brushes past you...\n";
+    cout << "This is your last chance to uncover final evidence.\n\n";
+
+    cout << "...........What would you like to do?...............\n";
+    cout << "1. Inspect the muddy footprints\n";
+    cout << "2. Examine the broken fence\n";
+    cout << "3. Search behind the bushes (waste time)\n";
+    cout << "4. Leave the Garden Path (Finish Stage 3)\n";
+    cout << "Enter your choice: ";
+
     int choice;
-    cout << "You have step into the Garden Path."<<endl<<endl;
-    cout << "Cold wind brushes past you."<<endl;
-    cout << "This is the last chance to prove yourself"<<endl;
-
-
-    cout << ".............What would you like to do?..............."<<endl<<endl;
-    cout << "1. Inspect the muddy footprints"<<endl;
-    cout << "2. Examine the broken fence"<<endl;
-    cout << "3. Search behind the bushes (waste time)"<<endl;
-    cout << "4. Leave the Garden Path (finish investigation)"<<endl;
-    cout << "enter the choice"<<endl;
     cin >> choice;
 
     switch (choice) {
+
         case 1:
             if (clues[2] == 0) {
-                cout << "you followed the muddy footprints."<<endl;
-                cout << "they lead away from the Study toward the back fence."<<endl;
+                cout << "\nYou examine the muddy footprints.\n";
+                cout << "They lead away from the Study toward the broken fence.\n";
                 clues[2] = 1;
                 reputation += 20;
-                energy-=10;
-                cout << "energy lost = 10 joules"<<endl;
-                cout << "reputation gained = 20"<<endl;
+                energy -= 10;
+                cout << "Energy -10\nReputation +20\n";
+            } else {
+                cout << "You already inspected the footprints.\n";
             }
             break;
 
         case 2:
-            if (clues[3] == 0){
-                cout << "You inspected the wooden fence."<<endl;
-                cout << "The fence is cracked someone forced their way through."<<endl;
-                clues[3] = 1;
-                reputation += 20;
-                energy-=10;
-                cout << "energy lost = 10 joules"<<endl;
-                cout << "reputation gained = 20"<<endl;
-            }
+            cout << "\nYou examine the wooden fence.\n";
+            cout << "It’s cracked — someone forced their way through.\n";
+            energy -= 5;
+            cout << "Energy -5\n";
             break;
 
         case 3:
-            cout << "You search the bushes but find nothing useful."<<endl;
-            energy-=10;
-            cout << "energy lost = 10 joules"<<endl;
+            cout << "\nYou search the bushes but find nothing useful.\n";
+            energy -= 10;
+            cout << "Energy -10\n";
             break;
 
         case 4:
-            cout << "You take one last look at the Garden Path. you have done all you could have and collected all the evidences ."<<endl;
+            cout << "\nYou leave the Garden Path.\n";
+            cout << "You feel you've gathered enough evidence.\n";
             break;
 
         default:
-            cout << "Invalid choice."<<endl;
+            cout << "Invalid choice.\n";
             break;
     }
-    cout << "stage 3 is finished and the game is over";
+
+    cout << "\nStage 3 investigation completed. Return to Foyer for final accusation.\n";
 }
+
 // This function enables the user to move to other locations of house. Function displays the different locations
 // and prompts the user to choose the locations
 void moveLocation(int& energy, int& stage) {
