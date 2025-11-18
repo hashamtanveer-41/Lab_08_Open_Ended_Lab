@@ -198,27 +198,32 @@ void stageOne(int &energy, int &reputation, int clues[]){
 }
 void stageTwo(int &energy, int &reputation, int []) {
 int choice;
-
-    cout << "you are in the dining room"<<endl<<endl;
-    cout << "lady Evelyn sits quietly at her table"<<endl;
+    cout << "Lady Evelyn sits quietly at her table"<<endl;
     cout << "Arthur Bellamy sits nearby"<<endl;
 
-    cout << "............who would you like to talk to ?............."<<endl<<endl;
+    cout << "............Who would you like to talk to?............."<<endl<<endl;
     cout << "1 .Interrogate lady"<<endl;
     cout << "2 .Interrogate Arthur"<<endl;
     cout << "3 .Investigate the dining room"<<endl;
     cout << "4 .Leave the dining"<<endl<<endl;
-    cout << "Enter the choice"<<endl;
+    cout << "Enter your choice: "<<endl;
     cin >> choice;
-
+    while (choice<1|| choice>4) {
+        cout << "Invalid choice. Enter your choice: "<<endl;
+        cin >> choice;
+    }
     switch (choice) {
         case 1:
-            cout << "go to the lady"<<endl<<endl;
-            cout << "1. ask her about where she was"<<endl;
-            cout << "2. accuse her of the charges"<<endl;
+            cout << "Go to the lady"<<endl<<endl;
+            cout << "1. Ask her about where she was"<<endl;
+            cout << "2. Accuse her of the charges"<<endl;
             int decision;
-            cout << "choose an option"<<endl;
+            cout << "Choose an option: "<<endl;
             cin >> decision;
+            while (choice<1|| choice>2) {
+                cout << "Invalid option. Enter your option: "<<endl;
+                cin >> choice;
+            }
             if (decision==1){
                 if (clues[0]==0) {
                     cout << "She says I was in the resting room. With her voice trembling"<<endl;
@@ -293,6 +298,7 @@ int choice;
     cout << "stage 2 completed. Now on to the garden path"<<endl;
 
 }
+
 void stageThree(int &energy, int &reputation, int[]) {
     int choice;
     cout << "You have step into the Garden Path."<<endl<<endl;
