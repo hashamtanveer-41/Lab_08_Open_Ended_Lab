@@ -125,14 +125,15 @@ void displayIntro(){
           "\t2. Arthur Bellamy (the butler): loyal but secretive\n "
           "Following is info about Ravenhurst Manor Locations: \n"
           "\t1.The Grand Hall(base)\n"
-          "\t2.The Study Room (crime scene)\n"
-          "\t3.The dining Room(suspect area)\n"
-          "\t4.The Garden Path(hidden clue area)\n"<<endl;
+          "\t2.The Study Room (Stage 1)\n"
+          "\t3.The dining Room(Stage 2)\n"
+          "\t4.The Garden Path(Stage 3)\n"<<endl;
     cout<<"(Press any key and enter to continue)";
     cin>>begin;
 }
 
-// This function displays the menu to the user and prompts him/her to make the choice and returns the choice
+// This function displays the menu to the user and prompts him/her
+// to make the choice and returns the choice
 int showMenu(int stage) {
     int choice;
     // Displaying menu to the user
@@ -154,8 +155,12 @@ int showMenu(int stage) {
     }
     return choice;
 }
+
+// This function contains all the logic of stage 1. First the detective enter the
+// study room  and then finds the clues in study room
 void stageOne(int &energy, int &reputation, int clues[]){
     cout<<"-------------------Stage One------------------"<<endl;
+    // Asking user the way to enter the study room
     cout<<"\nYou are standing outside the study room.\n";
     cout<<"How do you want to enter?\n";
     cout<<"\n1. Ask the Butler for the key? \033[1;33m(You may lose Energy)\033[0m\n";
@@ -163,14 +168,23 @@ void stageOne(int &energy, int &reputation, int clues[]){
     cout<<"\nReply with 1 or 2 to choose from the above: ";
     int choice;
     cin>>choice;
+    // Validating the input
+    while (choice<1|| choice<2) {
+        cout<<"Invalid choice. Enter valid option: "<<endl;
+        cin>>choice;
+    }
+    // Executing the case respective to the user choice
     switch(choice){
         case 1:
-            energy -=3;
-            cout<<"Butler reluctantly hands you the key \033[1;31m(Your Energy decreased by 3)\033[0m\n";
+            // Easy way but costs energy
+            energy -=15;
+            cout<<"Butler reluctantly hands you the key \033[1;31m(Your Energy decreased by 15)\033[0m\n";
 
             break;
         case 2:
+            // You tried to pick the lock
             bool success;
+            // Randomly checking if you succeeded in picking the lock
             int random_value = rand() % 100;
             random_value < 70 ? success = true : success = false;
             if (success)
@@ -187,9 +201,12 @@ void stageOne(int &energy, int &reputation, int clues[]){
                 cout<<"\033[1;31m Your Energy and Reputation decreased by 10\033[0m\n";
             }
     }
+    // Giving clue to the user for further investigation
     cout<<"\n\nNear Lord Sterling's desk lies a damp handkerchief embroidered with initials in the room (Clue 1)";
     clues[0] = 1;
+    // Finding another clue in the drawer of study room
     cout<<"\n\nYou are now searching the drawers....\n\n";
+    // Randomly generating that the user will be able to gather the clue or not
     int foundClue2 = rand() % 2;
     if (foundClue2 == 1)
     {   clues[1] =1;
@@ -199,9 +216,8 @@ void stageOne(int &energy, int &reputation, int clues[]){
     else{
         cout<<"\nYou search the drawers, but find nothing unusual.";
     }
-
-
 }
+
 void stageTwo(int &energy, int &reputation, int []) {
     int choice;
     cout<<"-------------------Stage Two------------------"<<endl;
