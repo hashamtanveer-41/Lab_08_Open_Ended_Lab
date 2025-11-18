@@ -18,7 +18,6 @@ int showMenu(int);
 void stageOne(int &, int &, int []);
 void stageTwo(int &energy, int &reputation, int clues[]);
 void stageThree(int &energy, int &reputation, int []);
-bool playAgain();
 void showStats(int, int);
 void moveLocation(int&, int&);
 void finalAccusation(int energy, int reputation, int clues[]);
@@ -54,7 +53,11 @@ int main() {
                 // Executing respective stage according to the user choice
                 if (stage == 1) stageOne(energy, reputation, clues);
                 else if (stage == 2)stageTwo(energy, reputation, clues);
-                else stageThree(energy, reputation, clues);
+                else if (stage == 3) {
+                    stageThree(energy, reputation, clues);
+                    finalAccusation(energy, reputation, clues);
+                    gameRunning = false;
+                }
                 break;
             case 4: // Talking to suspect
                 break;
